@@ -59,7 +59,7 @@ void menu()
 void inicializar()
 {
 
-	// se a lista já possuir elementos
+	// se a lista jÃ¡ possuir elementos
 	// libera a memoria ocupada
 	NO* aux = inicio;
 	while (aux != NULL) {
@@ -78,7 +78,7 @@ void inicializar()
 void insere()
 {
 	// aloca memoria dinamicamente para o novo elemento
-	NO* novo = (NO*)malloc(sizeof(NO));
+NO* novo = (NO*)malloc(sizeof(NO));
 	if (novo == NULL)
 	{
 		return;
@@ -88,12 +88,28 @@ void insere()
 	cin >> novo->valor;
 	novo->prox = NULL;
 
+	if (inicio == NULL) {
+		inicio = novo;
+		fim = novo;
+	}
+	else {
+		fim->prox = novo;
+		fim = novo;
+	}
 
 }
 
 void remove()
 {
-
+NO* aux = inicio;
+	if (inicio == NULL) {
+		cout << "Fila vazia." << endl;
+	}
+	else {
+		inicio = inicio->prox;
+		cout << "O elemento " << aux->valor << " foi excluido" << endl;
+		free(aux);
+	}
 
 
 }
